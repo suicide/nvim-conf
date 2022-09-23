@@ -6,3 +6,6 @@ require('keymaps')
 
 require('conf-telescope')
 require('conf-gitsigns')
+
+require('conf-treesitter')
+require('conf-treesitter-context')
