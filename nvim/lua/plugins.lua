@@ -18,6 +18,8 @@ return require("packer").startup(function()
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+  use { 'lewis6991/gitsigns.nvim' }
 end)
 
 -- TODO LSP stuff
