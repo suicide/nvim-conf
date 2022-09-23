@@ -20,7 +20,7 @@ set.wrap = false
 
 set.cursorline = true
 
-set.clipboard = 'unnamedplus'
+set.clipboard = 'unnamed,unnamedplus'
 --set clipboard^=unnamed,unnamedplus
 
 set.smartcase = true
