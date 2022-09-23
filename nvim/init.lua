@@ -9,3 +9,5 @@ require('conf-gitsigns')
 
 require('conf-treesitter')
 require('conf-treesitter-context')
+
+require('conf-lsp')

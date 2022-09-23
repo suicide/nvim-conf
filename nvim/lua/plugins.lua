@@ -27,6 +27,11 @@ return require("packer").startup(function()
 
   use("nvim-treesitter/playground")
   use("nvim-treesitter/nvim-treesitter-context")
+
+  use {
+    "williamboman/nvim-lsp-installer",
+    "neovim/nvim-lspconfig",
+  }
 end)
 
 -- TODO LSP stuff
