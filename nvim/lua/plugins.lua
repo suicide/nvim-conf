@@ -37,5 +37,3 @@ return require("packer").startup(function()
   use("rcarriga/nvim-dap-ui")
   use("theHamsta/nvim-dap-virtual-text")
 end)
-
--- TODO LSP stuff
