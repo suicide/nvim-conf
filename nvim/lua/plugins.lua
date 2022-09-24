@@ -32,6 +32,10 @@ return require("packer").startup(function()
     "williamboman/nvim-lsp-installer",
     "neovim/nvim-lspconfig",
   }
+
+  use("mfussenegger/nvim-dap")
+  use("rcarriga/nvim-dap-ui")
+  use("theHamsta/nvim-dap-virtual-text")
 end)
 
 -- TODO LSP stuff

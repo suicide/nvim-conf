@@ -1,5 +1,7 @@
 require("nvim-lsp-installer").setup {}
 local lspconfig = require("lspconfig")
+local dap = require("dap")
+local dapui = require("dapui")
 
 local builtin = function() return require('telescope.builtin') end
 
@@ -26,22 +28,22 @@ local on_attach = function(client, bufnr)
   end, bufopts)
 
   -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'gd', function ()
-	  return builtin().lsp_definitions()
+  vim.keymap.set('n', 'gd', function()
+    return builtin().lsp_definitions()
   end, bufopts)
 
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', 'gi', function ()
-	  return builtin().lsp_implementations()
+  vim.keymap.set('n', 'gi', function()
+    return builtin().lsp_implementations()
   end, bufopts)
 
   -- vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<Leader>D', function ()
-	  return builtin().lsp_type_definitions()
+  vim.keymap.set('n', '<Leader>D', function()
+    return builtin().lsp_type_definitions()
   end, bufopts)
 
   -- vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, opts)
-  vim.keymap.set('n', '<Leader>q', function ()
+  vim.keymap.set('n', '<Leader>q', function()
     return builtin().diagnostics({
       bufnr = bufnr
     })
@@ -57,6 +59,35 @@ local on_attach = function(client, bufnr)
     augroup END
     ]], false)
   end
+
+  -- dap keymap
+  vim.keymap.set('n', '<F5>', function()
+    dap.continue()
+  end, bufopts)
+  vim.keymap.set('n', '<F6>', function()
+    dap.step_over()
+  end, bufopts)
+  vim.keymap.set('n', '<F7>', function()
+    dap.step_into()
+  end, bufopts)
+  vim.keymap.set('n', '<F8>', function()
+    dap.step_out()
+  end, bufopts)
+  vim.keymap.set('n', '<Leader>db', function()
+    dap.toggle_breakpoint()
+  end, bufopts)
+  vim.keymap.set('n', '<Leader>dB', function()
+    dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+  end, bufopts)
+  vim.keymap.set('n', '<Leader>dlp', function()
+    dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+  end, bufopts)
+  vim.keymap.set('n', '<Leader>dr', function()
+    dap.repl_open()
+  end, bufopts)
+  vim.keymap.set('n', '<Leader>dl', function()
+    dap.run_last()
+  end, bufopts)
 end
 
 local function config(_config)
@@ -88,3 +119,25 @@ lspconfig.sumneko_lua.setup(config({
     },
   },
 }))
+
+
+
+-- dap
+
+
+dapui.setup()
+
+-- run dapui when dap connects and so on
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+
+
+require("nvim-dap-virtual-text").setup()
