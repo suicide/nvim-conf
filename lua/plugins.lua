@@ -34,6 +34,8 @@ return require("packer").startup(function()
     "neovim/nvim-lspconfig",
   }
 
+  use("scalameta/nvim-metals")
+
   use("mfussenegger/nvim-dap")
   use("rcarriga/nvim-dap-ui")
   use("theHamsta/nvim-dap-virtual-text")

@@ -22,6 +22,10 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<Leader>F', vim.lsp.buf.formatting, bufopts)
 
+  vim.keymap.set('n', '<Leader>cl', function ()
+    return vim.lsp.codelens.run()
+  end, bufopts)
+
   -- DO IT WITH TELESCOPE
   -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', 'gr', function()
@@ -36,6 +40,11 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'gi', function()
     return builtin().lsp_implementations()
+  end, bufopts)
+
+  vim.keymap.set('n', 'gs', function()
+    return builtin().lsp_dynamic_workspace_symbols()
+    -- return builtin().lsp_workspace_symbols()
   end, bufopts)
 
   -- vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, bufopts)
@@ -125,7 +134,34 @@ lspconfig.sumneko_lua.setup(config({
 
 lspconfig.rust_analyzer.setup(config())
 
+-- scala metals
+local metals = require("metals")
+local metals_config = metals.bare_config()
 
+-- Example of settings
+metals_config.settings = {
+  showImplicitArguments = true,
+  excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+}
+
+metals_config.on_attach = function(client, bufnr)
+  metals.setup_dap()
+  -- run default on_attach
+  on_attach(client, bufnr)
+end
+
+-- Autocmd that will actually be in charging of starting the whole thing
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "scala", "sbt"},
+  callback = function()
+    -- merge default and metals config here
+    metals.initialize_or_attach(config(metals_config))
+  end,
+  group = nvim_metals_group,
+})
+
+-------------------------------------------------------------------------------
 -- dap
 
 
@@ -142,9 +178,28 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-
-
 require("nvim-dap-virtual-text").setup()
+
+-- dap scala metals
+dap.configurations.scala = {
+  {
+    type = "scala",
+    request = "launch",
+    name = "RunOrTest",
+    metals = {
+      runType = "runOrTestFile",
+      --args = { "firstArg", "secondArg", "thirdArg" }, -- here just as an example
+    },
+  },
+  {
+    type = "scala",
+    request = "launch",
+    name = "Test Target",
+    metals = {
+      runType = "testTarget",
+    },
+  },
+}
 
 
 dap.adapters.lldb = {
