@@ -1,8 +1,9 @@
 require("nvim-lsp-installer").setup {}
 local lspconfig = require("lspconfig")
+local cmp_lsp = require('cmp_nvim_lsp')
+
 local dap = require("dap")
 local dapui = require("dapui")
-
 local builtin = function() return require('telescope.builtin') end
 
 -- Use an on_attach function to only map the following keys
@@ -91,7 +92,9 @@ local on_attach = function(client, bufnr)
 end
 
 local function config(_config)
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local capabilities = cmp_lsp.update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  )
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   return vim.tbl_deep_extend("force", {
