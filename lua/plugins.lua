@@ -5,6 +5,7 @@ return require("packer").startup(function()
   use("Xuyuanp/nerdtree-git-plugin")
 
   use("gruvbox-community/gruvbox")
+  use("folke/tokyonight.nvim")
 
   use {
     'nvim-lualine/lualine.nvim',

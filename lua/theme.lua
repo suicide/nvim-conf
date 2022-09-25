@@ -6,7 +6,8 @@ vim.cmd([[hi LspReferenceText cterm=bold gui=bold]])
 vim.cmd([[hi LspReferenceRead cterm=bold gui=bold]])
 vim.cmd([[hi LspReferenceWrite cterm=bold gui=bold]])
 
-vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme tokyonight-night]])
 
 -- vim.cmd([[set background=dark]])
-vim.opt.background = "dark"
+-- vim.opt.background = "dark"
