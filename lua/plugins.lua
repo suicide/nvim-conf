@@ -35,6 +35,7 @@ return require("packer").startup(function()
   }
 
   use("scalameta/nvim-metals")
+  use("mfussenegger/nvim-jdtls")
 
   use("mfussenegger/nvim-dap")
   use("rcarriga/nvim-dap-ui")
