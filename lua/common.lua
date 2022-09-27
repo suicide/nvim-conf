@@ -48,8 +48,10 @@ set.spelllang = "en,en_us"
 set.list = true
 set.listchars = "tab:␉·,trail:·,nbsp:⎵"
 
-vim.g.mapleader = " "
+set.splitbelow = true
+set.splitright = true
 
+vim.g.mapleader = " "
 
 vim.g.netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
