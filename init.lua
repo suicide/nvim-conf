@@ -13,3 +13,5 @@ require('conf-treesitter-context')
 require('conf-cmp')
 
 require('conf-lsp')
+
+require('conf-comment')
