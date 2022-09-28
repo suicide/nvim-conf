@@ -137,11 +137,34 @@ lspconfig.sumneko_lua.setup(config({
         -- Get the language server to recognize the `vim` global
         globals = { "vim" },
       },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
     },
   },
 }))
 
 lspconfig.rust_analyzer.setup(config())
+
+lspconfig.bashls.setup(config())
+lspconfig.jsonls.setup(config())
+lspconfig.html.setup(config())
+lspconfig.dockerls.setup(config())
+lspconfig.solc.setup(config())
+
+lspconfig.yamlls.setup(config({
+  settings = {
+    yaml = {
+      schemas = {
+      }
+    }
+  }
+}))
 
 -- scala metals
 local metals = require("metals")
