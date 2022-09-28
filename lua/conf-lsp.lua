@@ -182,6 +182,12 @@ local create_jdtls_config = function()
   local config_dir = util.path.join(jdtls_cache_dir, 'config')
   local workspace_dir = util.path.join(jdtls_cache_dir, 'workspace')
 
+  local bundles = {
+    vim.fn.glob(env.HOME ..
+      "/.lib/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
+  }
+  -- TODO fix this
+  -- vim.list_extend(bundles, vim.split(vim.fn.glob(env.HOME .. "/.lib/vscode-java-test/server/*.jar")))
 
   local function get_jdtls_jvm_args()
     local args = {}
@@ -261,6 +267,7 @@ local create_jdtls_config = function()
             {
               name = "JavaSE-11",
               path = "/usr/lib/jvm/java-11-openjdk/",
+              default = true,
             },
             {
               name = "JavaSE-17",
@@ -283,13 +290,14 @@ local create_jdtls_config = function()
     --
     -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
     init_options = {
-      bundles = {}
+      bundles = bundles
     },
-    on_attach = function (client, bufnr)
+    on_attach = function(client, bufnr)
       on_attach(client, bufnr)
 
       local jdtls_setup = require('jdtls.setup')
       jdtls_setup.add_commands()
+      jdtls.setup_dap({ hotcodereplace = 'auto' })
 
     end
   }
@@ -349,6 +357,15 @@ dap.configurations.scala = {
   },
 }
 
+dap.configurations.java = {
+  {
+    type = 'java';
+    request = 'attach';
+    name = "Debug (Attach) - Remote";
+    hostName = "127.0.0.1";
+    port = 5005;
+  },
+}
 
 dap.adapters.lldb = {
   type = 'executable',
