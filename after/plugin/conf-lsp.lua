@@ -154,6 +154,7 @@ lspconfig.rust_analyzer.setup(config())
 lspconfig.bashls.setup(config())
 lspconfig.jsonls.setup(config())
 lspconfig.html.setup(config())
+lspconfig.marksman.setup(config())
 lspconfig.dockerls.setup(config())
 lspconfig.solc.setup(config())
 
