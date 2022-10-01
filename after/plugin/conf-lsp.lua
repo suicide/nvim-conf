@@ -1,4 +1,4 @@
-require("nvim-lsp-installer").setup {}
+require("mason").setup {}
 local lspconfig = require("lspconfig")
 local util = require('lspconfig.util')
 local cmp_lsp = require('cmp_nvim_lsp')

@@ -67,7 +67,7 @@ return require("packer").startup(function(use)
   -- LSP
   use {
     { "neovim/nvim-lspconfig" },
-    { "williamboman/nvim-lsp-installer" },
+    { "williamboman/mason.nvim" },
     { "scalameta/nvim-metals" },
     { "mfussenegger/nvim-jdtls" },
   }
