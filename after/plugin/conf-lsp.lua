@@ -13,6 +13,8 @@ local env = {
   JDTLS_JVM_ARGS = os.getenv 'JDTLS_JVM_ARGS',
 }
 
+local mason_packages = env.HOME .. '/.local/share/nvim/mason/packages'
+
 local cache_dir = env.XDG_CACHE_HOME and env.XDG_CACHE_HOME or util.path.join(env.HOME, '.cache')
 
 -- Use an on_attach function to only map the following keys
@@ -207,11 +209,11 @@ local create_jdtls_config = function()
   local workspace_dir = util.path.join(jdtls_cache_dir, 'workspace')
 
   local bundles = {
-    vim.fn.glob(env.HOME ..
-      "/.lib/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
+    vim.fn.glob(mason_packages ..
+      "/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"),
   }
   -- TODO fix this
-  -- vim.list_extend(bundles, vim.split(vim.fn.glob(env.HOME .. "/.lib/vscode-java-test/server/*.jar")))
+  -- vim.list_extend(bundles, vim.split(vim.fn.glob(mason_packages .. "/java-test/extension/server/*.jar")))
 
   local function get_jdtls_jvm_args()
     local args = {}
