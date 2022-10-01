@@ -26,8 +26,6 @@ set.clipboard = 'unnamed,unnamedplus'
 set.smartcase = true
 set.swapfile = false
 set.backup = false
-set.undodir = os.getenv("HOME") .. "/.vim/undodir"
-set.undofile = true
 set.incsearch = true
 
 set.termguicolors = true
