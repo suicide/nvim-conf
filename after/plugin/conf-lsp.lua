@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<Leader>k', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<Leader>F', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<Leader>F', function() vim.lsp.buf.format({ async = true }) end, bufopts)
 
   vim.keymap.set('n', '<Leader>cl', function()
     return vim.lsp.codelens.run()
