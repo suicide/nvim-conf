@@ -107,4 +107,9 @@ return require("packer").startup(function(use)
     "numToStr/Comment.nvim",
     config = [[require('config.comment')]]
   }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
 end)
