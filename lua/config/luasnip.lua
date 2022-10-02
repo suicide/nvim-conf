@@ -70,3 +70,8 @@ vim.keymap.set("i", "<c-u>", require "luasnip.extras.select_choice")
 -- ls.add_snippets('all', {ls.parser.parse_snippet('expand', 'this $1i $2 a test $3')})
 -- ls.add_snippets('all', {s('test', t(" expanded!"))})
 -- ls.add_snippets('all', {s('aggg', fmt('he {} bbb {}', {i(1, 'deff'), rep(1)}))})
+
+
+require("luasnip.loaders.from_lua").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
