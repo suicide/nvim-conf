@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<Leader>k', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<Leader>F', vim.lsp.buf.formatting, bufopts)
@@ -68,7 +68,7 @@ local on_attach = function(client, bufnr)
     return builtin().diagnostics({
       bufnr = bufnr
     })
-  end, opts)
+  end, bufopts)
 
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.document_highlight then

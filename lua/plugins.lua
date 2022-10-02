@@ -100,7 +100,7 @@ return require("packer").startup(function(use)
     config = [[require('config.luasnip')]],
   }
 
-  use { 
+  use {
     "numToStr/Comment.nvim",
     config = [[require('config.comment')]]
   }
