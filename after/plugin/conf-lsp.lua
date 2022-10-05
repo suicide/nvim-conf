@@ -159,6 +159,7 @@ lspconfig.html.setup(config())
 lspconfig.cssls.setup(config())
 lspconfig.marksman.setup(config())
 lspconfig.dockerls.setup(config())
+lspconfig.gopls.setup(config())
 lspconfig.solc.setup(config())
 
 lspconfig.yamlls.setup(config({
