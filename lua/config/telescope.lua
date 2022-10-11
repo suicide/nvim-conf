@@ -6,6 +6,7 @@ telescope.load_extension('fzf')
 local builtin = function() return require('telescope.builtin') end
 
 vim.keymap.set('n', '<C-p>', function() return builtin().find_files({
+    find_command = { "rg", "--files", "--color", "never", "--glob", "!.git/" },
     hidden = true
   })
 end)
