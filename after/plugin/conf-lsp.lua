@@ -112,13 +112,11 @@ local on_attach = function(client, bufnr)
 end
 
 local function config(_config)
-  local capabilities = cmp_lsp.update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  )
+  local capabilities = cmp_lsp.default_capabilities()
+
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   return vim.tbl_deep_extend("force", {
-    -- capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     capabilities = capabilities,
     on_attach = on_attach,
   }, _config or {})
