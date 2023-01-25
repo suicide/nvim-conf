@@ -2,6 +2,7 @@ require("mason").setup {}
 local lspconfig = require("lspconfig")
 local util = require('lspconfig.util')
 local cmp_lsp = require('cmp_nvim_lsp')
+local null_ls = require('null-ls')
 
 local dap = require("dap")
 local dapui = require("dapui")
@@ -124,7 +125,19 @@ end
 
 -- setup servers
 
-lspconfig.tsserver.setup(config())
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.prettier,
+  }
+})
+
+lspconfig.tsserver.setup(config({
+  on_attach = function (client, bufnr)
+    -- use null-ls instead
+    client.server_capabilities.document_formatting = false
+    on_attach(client, bufnr)
+  end
+}))
 
 lspconfig.sumneko_lua.setup(config({
   settings = {
