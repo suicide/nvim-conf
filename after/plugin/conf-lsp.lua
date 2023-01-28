@@ -24,6 +24,10 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- null-ls messes up nvim formatting
+  -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
+  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
