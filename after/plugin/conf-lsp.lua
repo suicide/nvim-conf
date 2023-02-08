@@ -131,8 +131,12 @@ end
 -- setup servers
 
 null_ls.setup({
+  -- debug = true,
   sources = {
     null_ls.builtins.formatting.prettier,
+    -- check https://github.com/jose-elias-alvarez/null-ls.nvim/pull/811
+    -- as soon as there is an error the output is written to stderr instead stdout
+    -- null_ls.builtins.diagnostics.solhint,
   }
 })
 
@@ -176,7 +180,9 @@ lspconfig.cssls.setup(config())
 lspconfig.marksman.setup(config())
 lspconfig.dockerls.setup(config())
 lspconfig.gopls.setup(config())
-lspconfig.solc.setup(config())
+-- lspconfig.solc.setup(config())
+-- use solidity while solc is still having problems, needs solidity-ls and solc
+lspconfig.solidity.setup(config())
 
 lspconfig.yamlls.setup(config({
   settings = {
