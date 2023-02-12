@@ -40,7 +40,7 @@ set.cmdheight = 2
 
 set.shortmess:append("c")
 
-set.spell = false
+set.spell = true
 set.spelllang = "en,en_us"
 
 set.list = true

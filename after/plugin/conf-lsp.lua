@@ -134,6 +134,7 @@ null_ls.setup({
   -- debug = true,
   sources = {
     null_ls.builtins.formatting.prettier,
+    null_ls.builtins.diagnostics.codespell,
     -- check https://github.com/jose-elias-alvarez/null-ls.nvim/pull/811
     -- as soon as there is an error the output is written to stderr instead stdout
     -- null_ls.builtins.diagnostics.solhint,
