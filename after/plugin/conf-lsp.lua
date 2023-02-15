@@ -141,6 +141,14 @@ null_ls.setup({
   }
 })
 
+lspconfig.ltex.setup(config({
+  settings = {
+    ltex = {
+      language = "en-US",
+    }
+  }
+}))
+
 lspconfig.tsserver.setup(config({
   on_attach = function (client, bufnr)
     -- use null-ls instead
