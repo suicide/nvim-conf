@@ -91,7 +91,6 @@ return require("packer").startup(function(use)
       { "hrsh7th/cmp-cmdline", after = 'nvim-cmp' },
       { "hrsh7th/cmp-emoji", after = 'nvim-cmp' },
       { "hrsh7th/cmp-calc", after = 'nvim-cmp' },
-      { "f3fora/cmp-spell", after = 'nvim-cmp' },
       { "saadparwaiz1/cmp_luasnip", after = { 'nvim-cmp', 'LuaSnip' } },
     },
     config = [[require('config.cmp')]],
