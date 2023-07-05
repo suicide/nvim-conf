@@ -36,8 +36,21 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<Leader>k', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<Leader>F', function() vim.lsp.buf.format({ async = true, noremap = true }) end, bufopts)
-  vim.keymap.set('v', '<Leader>F', function() vim.lsp.buf.format({ async = true, noremap = true }) end, bufopts)
+
+  -- prefer null-ls for formatting
+  local null_ls_sources = require('null-ls.sources')
+  local ft = vim.bo[bufnr].filetype
+  local has_null_ls = #null_ls_sources.get_available(ft, 'NULL_LS_FORMATTING') > 0
+  local formatter_filter = function(cl)
+      if has_null_ls then
+        return cl.name == 'null-ls'
+      else
+        return true
+      end
+    end
+
+  vim.keymap.set('n', '<Leader>F', function() vim.lsp.buf.format({ async = true, noremap = true, filter = formatter_filter }) end, bufopts)
+  vim.keymap.set('v', '<Leader>F', function() vim.lsp.buf.format({ async = true, noremap = true, filter = formatter_filter }) end, bufopts)
 
   vim.keymap.set('n', '<Leader>cl', function()
     return vim.lsp.codelens.run()
@@ -133,8 +146,16 @@ end
 null_ls.setup({
   -- debug = true,
   sources = {
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier.with({
+      extra_filetypes = { "svelte"}
+    }),
+    null_ls.builtins.formatting.forge_fmt,
+    null_ls.builtins.formatting.rustfmt,
+    null_ls.builtins.formatting.scalafmt,
     null_ls.builtins.diagnostics.codespell,
+    null_ls.builtins.diagnostics.eslint.with({
+      extra_filetypes = { "svelte"}
+    }),
     -- check https://github.com/jose-elias-alvarez/null-ls.nvim/pull/811
     -- as soon as there is an error the output is written to stderr instead stdout
     -- null_ls.builtins.diagnostics.solhint,
