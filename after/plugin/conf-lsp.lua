@@ -331,6 +331,12 @@ local create_jdtls_config = function()
             staticStarThreshold = 9999;
           }
         },
+        compile = {
+          nullAnalysis = {
+            nullable = {},
+            nonnull = {}
+          }
+        },
         codeGeneration = {
           toString = {
             template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
@@ -359,6 +365,12 @@ local create_jdtls_config = function()
               name = "JavaSE-21",
               path = "/usr/lib/jvm/java-21-openjdk/",
             },
+          }
+        },
+        project = {
+          referencedLibraries = {
+            "/home/psy/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.7.3/spotbugs-annotations-4.7.3.jar"
+            -- env.HOME .. "/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.7.3/spotbugs-annotations-4.7.3.jaraa"
           }
         }
       }
