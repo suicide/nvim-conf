@@ -22,11 +22,11 @@ local cache_dir = env.XDG_CACHE_HOME and env.XDG_CACHE_HOME or util.path.join(en
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', {buf = bufnr})
 
   -- null-ls messes up nvim formatting
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
-  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+  vim.api.nvim_set_option_value('formatexpr', '', {buf = bufnr})
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -150,7 +150,7 @@ null_ls.setup({
       extra_filetypes = { "svelte"}
     }),
     null_ls.builtins.formatting.forge_fmt,
-    null_ls.builtins.formatting.rustfmt,
+    -- null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.scalafmt,
     null_ls.builtins.diagnostics.codespell,
     null_ls.builtins.diagnostics.eslint.with({
