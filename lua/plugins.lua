@@ -70,7 +70,7 @@ return require("packer").startup(function(use)
     { "williamboman/mason.nvim" },
     { "scalameta/nvim-metals" },
     { "mfussenegger/nvim-jdtls" },
-    { "jose-elias-alvarez/null-ls.nvim" },
+    { "nvimtools/none-ls.nvim" },
   }
 
   -- DAP
