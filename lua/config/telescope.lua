@@ -1,4 +1,11 @@
 local telescope = require('telescope')
+
+telescope.setup({
+  defaults = {
+    path_display = {"smart"},
+  }
+})
+
 -- enable fzf
 telescope.load_extension('fzf')
 
