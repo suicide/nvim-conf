@@ -2,7 +2,7 @@ local telescope = require('telescope')
 
 telescope.setup({
   defaults = {
-    path_display = {"smart"},
+    path_display = {"truncate"},
   }
 })
 
