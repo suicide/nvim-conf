@@ -153,9 +153,9 @@ null_ls.setup({
     -- null_ls.builtins.formatting.rustfmt,
     null_ls.builtins.formatting.scalafmt,
     null_ls.builtins.diagnostics.codespell,
-    null_ls.builtins.diagnostics.eslint.with({
-      extra_filetypes = { "svelte", "astro" }
-    }),
+    -- null_ls.builtins.diagnostics.eslint.with({
+    --   extra_filetypes = { "svelte", "astro" }
+    -- }),
     -- check https://github.com/jose-elias-alvarez/null-ls.nvim/pull/811
     -- as soon as there is an error the output is written to stderr instead stdout
     -- null_ls.builtins.diagnostics.solhint,
@@ -207,6 +207,7 @@ lspconfig.bashls.setup(config())
 lspconfig.jsonls.setup(config())
 lspconfig.html.setup(config())
 lspconfig.cssls.setup(config())
+lspconfig.eslint.setup(config())
 lspconfig.tailwindcss.setup(config())
 lspconfig.svelte.setup(config())
 lspconfig.marksman.setup(config())
