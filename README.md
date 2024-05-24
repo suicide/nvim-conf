@@ -4,13 +4,5 @@ Basic "IDE" setup with git integration, LSP, DAP, auto-complete.
 
 ### Installation
 
-install packer
+Drop into `~/.config/nvim`
 
-```shell
-yay nvim-packer-git
-```
-
-Run packer sync to download all dependencies
-```
-:PackerSync
-```
