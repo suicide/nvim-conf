@@ -353,8 +353,8 @@ local create_jdtls_config = function()
               path = "/usr/lib/jvm/java-17-openjdk/",
             },
             {
-              name = "JavaSE-21",
-              path = "/usr/lib/jvm/java-21-openjdk/",
+              name = "JavaSE-22",
+              path = "/usr/lib/jvm/java-22-openjdk/",
             },
           }
         }
