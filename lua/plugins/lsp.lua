@@ -186,7 +186,7 @@ return {
       }
     }))
 
-    lspconfig.tsserver.setup(config({
+    lspconfig.ts_ls.setup(config({
       on_attach = function(client, bufnr)
         -- use null-ls instead
         client.server_capabilities.document_formatting = false
