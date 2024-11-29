@@ -8,7 +8,6 @@ return {
       "<leader>F",
       function()
         require("conform").format({ async = true })
-        print("hello")
       end,
       mode = "",
       desc = "Format buffer",
@@ -33,9 +32,9 @@ return {
     -- format_on_save = { timeout_ms = 500 },
     -- Customize formatters
     formatters = {
-      shfmt = {
-        prepend_args = { "-i", "2" },
-      },
+      -- shfmt = {
+      --   prepend_args = { "-i", "2" },
+      -- },
     },
   },
   init = function()
