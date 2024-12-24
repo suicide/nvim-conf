@@ -1,3 +1,5 @@
+local js_like_formatters = { "prettierd", "prettier", stop_after_first = true };
+
 return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
@@ -21,7 +23,10 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
-      javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = js_like_formatters,
+      typescript = js_like_formatters,
+      json = js_like_formatters,
+      jsonc = js_like_formatters,
       solidity = { "forge_fmt" },
     },
     -- Set default options
