@@ -12,6 +12,7 @@ return {
       "hrsh7th/cmp-calc",
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
+      "zbirenbaum/copilot-cmp",
     },
     event = { "BufEnter" },
     config = function()
@@ -48,7 +49,7 @@ return {
           { name = 'luasnip' }, -- For luasnip users.
           -- { name = 'ultisnips' }, -- For ultisnips users.
           -- { name = 'snippy' }, -- For snippy users.
-
+          { name = 'copilot' },
         }, {
           { name = 'buffer' },
           { name = 'calc' },
