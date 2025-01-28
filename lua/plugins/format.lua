@@ -27,6 +27,7 @@ return {
       typescript = js_like_formatters,
       json = js_like_formatters,
       jsonc = js_like_formatters,
+      html = js_like_formatters,
       solidity = { "forge_fmt" },
     },
     -- Set default options
