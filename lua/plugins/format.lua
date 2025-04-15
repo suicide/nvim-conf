@@ -29,6 +29,7 @@ return {
       jsonc = js_like_formatters,
       html = js_like_formatters,
       solidity = { "forge_fmt" },
+      tex = { "tex-fmt" },
     },
     -- Set default options
     default_format_opts = {
