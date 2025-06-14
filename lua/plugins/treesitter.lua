@@ -5,6 +5,9 @@ return {
       build = ":TSUpdate",
       event = { "BufEnter" },
       config = function()
+        -- Set compiler to get grammar installation working in NixOS. See
+        -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1449
+        require('nvim-treesitter.install').compilers = { 'gcc' }
         require('nvim-treesitter.configs').setup {
           ensure_installed = "all",
           sync_install = false,
