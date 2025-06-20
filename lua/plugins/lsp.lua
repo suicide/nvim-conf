@@ -237,6 +237,7 @@ return {
     -- lspconfig.solc.setup(config())
     -- use solidity while solc is still having problems, needs solidity-ls and solc
     lspconfig.solidity.setup(config())
+    lspconfig.nixd.setup(config())
 
     lspconfig.yamlls.setup(config({
       settings = {

@@ -30,6 +30,7 @@ return {
       html = js_like_formatters,
       solidity = { "forge_fmt" },
       tex = { "tex-fmt" },
+      nix = { "alejandra" },
     },
     -- Set default options
     default_format_opts = {
