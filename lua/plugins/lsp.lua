@@ -171,11 +171,11 @@ return {
     null_ls.setup({
       -- debug = true,
       sources = {
-        null_ls.builtins.formatting.prettier.with({
-          extra_filetypes = { "svelte", "astro" }
-        }),
-        null_ls.builtins.formatting.forge_fmt,
-        null_ls.builtins.formatting.scalafmt,
+        -- null_ls.builtins.formatting.prettier.with({
+        --   extra_filetypes = { "svelte", "astro" }
+        -- }),
+        -- null_ls.builtins.formatting.forge_fmt,
+        -- null_ls.builtins.formatting.scalafmt,
         null_ls.builtins.diagnostics.codespell,
         -- check https://github.com/jose-elias-alvarez/null-ls.nvim/pull/811
         -- as soon as there is an error the output is written to stderr instead stdout

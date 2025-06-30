@@ -28,9 +28,12 @@ return {
       json = js_like_formatters,
       jsonc = js_like_formatters,
       html = js_like_formatters,
+      svelte = js_like_formatters,
+      astro = js_like_formatters,
       solidity = { "forge_fmt" },
       tex = { "tex-fmt" },
       nix = { "alejandra" },
+      markdown = js_like_formatters,
     },
     -- Set default options
     default_format_opts = {
